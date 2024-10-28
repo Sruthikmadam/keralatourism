@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management System</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+form {
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.student-management {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.authentication {
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Student Management System</h1>
+</header>
+
+<main>
+  <section class="student-management">
+    <h2>Student Management</h2>
+    <!-- Form to add new student -->
+    <form id="addStudentForm">
+      <input type="text" id="studentName" placeholder="Student Name">
+      <input type="text" id="studentRollNo" placeholder="Roll No">
+      <button type="button" onclick="addStudent()">Add Student</button>
+    </form>
+    <!-- Student list will be populated here -->
+    <ul id="studentList"></ul>
+  </section>
+
+  <section class="authentication">
+    <h2>Authentication</h2>
+    <!-- Sign-up form -->
+    <form id="signupForm">
+      <input type="text" id="signupUsername" placeholder="Username">
+      <input type="password" id="signupPassword" placeholder="Password">
+      <button type="button" onclick="signup()">Sign Up</button>
+    </form>
+    <!-- Sign-in form -->
+    <form id="signinForm">
+      <input type="text" id="signinUsername" placeholder="Username">
+      <input type="password" id="signinPassword" placeholder="Password">
+      <button type="button" onclick="signin()">Sign In</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <!-- Your footer content goes here -->
+</footer>
+
+<script>// Student Management
+    let studentList = [];
+    
+    function addStudent() {
+      let name = document.getElementById("studentName").value;
+      let rollNo = document.getElementById("studentRollNo").value;
+      
+      studentList.push({ name, rollNo });
+      displayStudents();
+    }
+    
+    function displayStudents() {
+      let studentListElement = document.getElementById("studentList");
+      studentListElement.innerHTML = "";
+      
+      studentList.forEach(student => {
+        let listItem = document.createElement("li");
+        listItem.textContent = `${student.name} - ${student.rollNo}`;
+        studentListElement.appendChild(listItem);
+      });
+    }
+    
+    // Authentication
+    function signup() {
+      let username = document.getElementById("signupUsername").value;
+      let password = document.getElementById("signupPassword").value;
+      
+      // Here you would typically make a request to your server to handle user registration
+      // For demonstration purposes, we'll just log the details
+      console.log("Sign up:", { username, password });
+    }
+    
+    function signin() {
+      let username = document.getElementById("signinUsername").value;
+      let password = document.getElementById("signinPassword").value;
+      
+      // Here you would typically make a request to your server to handle user authentication
+      // For demonstration purposes, we'll just log the details
+      console.log("Sign in:", { username, password });
+    }</script>
+</body>
+</html>
